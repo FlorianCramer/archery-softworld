@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>archery-Sweb</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="icon" href="/assets/4_icon/1_webicon/icon_black.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/1_css/2_desktop/main.css">
+
+    <script src="/assets/2_js/0_logins/2_auth.js" defer></script>
+    <script src="/assets/2_js/0_logins/3_profile.js" defer></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <button class="menu_button" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="menuicons">
+            <a href="/web/index.html">
+                <i class="active fas fa-home"></i>
+                <div class="icon_label">Startseite</div>
+            </a>
+            <a href="/web/training.html">
+                <i class="fas fa-dumbbell"></i>
+                <div class="icon_label">Training</div>
+            </a>
+            <a href="/web/match.html">
+                <i class="fas fa-trophy"></i>
+                <div class="icon_label">Wettkampf</div>
+            </a>
+            <a href="/web/analyses.html">
+                <i class="fas fa-chart-line"></i>
+                <div class="icon_label">Analysen</div>
+            </a>
+            <a href="/web/profile.html">
+                <i class="fas fa-user"></i>
+                <div class="icon_label">Profil</div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="menu_panel" id="menuPanel">
+        <img src="/assets/4_icon/1_webicon/icon_black.png" alt="logo">
+        <h3>archery-Sweb</h3>
+        <p>Eine Software, die ins Gold trifft!</p>
+        <div class="showProfile">
+            <h2>Profil</h2>
+            <br>
+
+            <h3>
+                <span class="username-display"></span>
+            </h3>
+            <span id="member-id"></span>
+
+            <span class="license-display"></span>
+            <span id="club-name"></span>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 50%; text-align: right;">Alter: </td>
+                    <td style="width: 50%;" id="user-age"></td>
+                </tr>
+                <tr>
+                    <td style="width: 50%; text-align: right;">Wohnort: </td>
+                    <td style="width: 50%;" id="user-city"></td>
+                </tr>
+            </table>
+            <br>
+            <a href="/web/profile.html">Profil bearbeiten</a>
+        </div>
+    </div>
+
+
+    <div class="main_content" id="mainContent">
+        <div class="content">
+            <header>
+                <span class="username-display"></span>
+                <br>
+                <span class="license-display"></span>
+            </header>
+
+            <section class="banner">
+                <span class="version"></span>
+                <h2>archery-Sweb</h2>
+            </section>
+
+            <nav>
+                <a href="/web/index.html">Startseite</a>
+                <a href="/web/training.html">Training</a>
+                <a href="/web/match.html">Wettkampf</a>
+                <a href="/web/analyses.html">Analysen</a>
+                <a href="/web/profile.html">Profil</a>
+            </nav>
+
+            <article>
+                <h1>Willkommen, <span class="username-display"></span></h1>
+                <p>
+                    auf archery-Sweb
+                    <br>
+                    <br>
+                    Mit Sweb kannst du deine Trainingsdaten präzise erfassen, auswerten und analysieren.
+                </p>
+                <details>
+                    <summary>Mehr erfahren</summary>
+                    <p>Mit Sweb hast du ein leistungsstarkes Programm an deiner Seite, das dir hilft, deine
+                        Trainingsdaten präzise zu erfassen und auszuwerten. Du profitierst von zahlreichen
+                        Auswertungsmöglichkeiten, um deine Zielergebnisse systematisch zu analysieren und zu
+                        dokumentieren. In zukünftigen Versionen werden zusätzlich Module zur Erfassung und Analyse
+                        deiner Schießtechnik integriert, damit du deinen Trainingsfortschritt noch gezielter verfolgen
+                        kannst.</p>
+                </details>
+                <br>
+                <button class="logout" id="logout-button">Ausloggen</button>
+            </article>
+        </div>
+    </div>
+
+
+    <script src="/assets/2_js/1_menuSide/script.js"></script>
+    <script src="/assets/2_js/2_version/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".username-display").forEach(el => el.textContent = sessionStorage.getItem("loggedInUser"));
+            document.querySelectorAll(".license-display").forEach(el => el.textContent = sessionStorage.getItem("licenseNumber"));
+            document.getElementById("club-name").textContent = sessionStorage.getItem("clubName");
+            document.getElementById("member-id").textContent = sessionStorage.getItem("memberId");
+            document.getElementById("user-age").textContent = sessionStorage.getItem("age");
+            document.getElementById("user-city").textContent = sessionStorage.getItem("city");
+
+            document.getElementById("logout-button").addEventListener("click", function () {
+                sessionStorage.clear();
+                window.location.href = "/index.html";
+            });
+        });
+    </script>
+</body>
+
+</html>
