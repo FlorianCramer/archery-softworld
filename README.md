@@ -7,3 +7,6 @@ At the heart of the development is a secure log-in system that enables access to
 In the extended development phase, the integration of an AI-supported analysis module is planned. This module will generate targeted suggestions for the user's individual sighting and technique optimization based on the recorded hit images. This will provide the archer with valuable support to continuously improve their skills, as the AI works on a learning basis and adapts to the individual training progress and results.
 
 This website creates a comprehensive digital platform for archers that not only serves as a personal training and analysis tool, but also offers the potential to take archery to a new technological level in the long term.
+
+
+# it is only an test site
